@@ -3,14 +3,6 @@ require 'spec_helper'
 describe Workshop do
   subject(:workshop) { Fabricate(:workshop) }
 
-  it { should respond_to(:title) }
-  it { should respond_to(:description) }
-  it { should respond_to(:date_and_time) }
-  it { should respond_to(:sponsors) }
-  it { should respond_to(:workshop_sponsors) }
-  it { should respond_to(:rsvp_opens_at) }
-  it { should respond_to(:time_zone) }
-
   context 'time zone fields' do
     let(:workshop) { Fabricate.build(:workshop, chapter: Fabricate(:chapter, time_zone: 'Pacific Time (US & Canada)')) }
     let(:pacific_time) { ActiveSupport::TimeZone['Pacific Time (US & Canada)'].local(2015, 6, 12, 18, 30) }
@@ -50,15 +42,6 @@ describe Workshop do
         expect(workshop.rsvp_opens_at).to eq(pacific_time)
         expect(workshop.rsvp_opens_at.zone).to eq('PDT')
       end
-    end
-  end
-
-  context '#coach_spaces?' do
-    let(:sponsor) { Fabricate(:sponsor) }
-    let(:workshop) { Fabricate(:workshop_no_sponsor) }
-
-    before do
-      Fabricate(:workshop_sponsor, sponsor: sponsor, workshop: workshop, host: true)
     end
   end
 

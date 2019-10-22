@@ -45,7 +45,7 @@ gem 'gibbon', '~> 1.1.5'
 
 gem 'stripe'
 
-gem 'rails-html-sanitizer', '~> 1.2.0'
+gem 'rails-html-sanitizer', '~> 1.3.0'
 
 gem 'jbuilder'
 
@@ -83,5 +83,5 @@ group :production do
 end
 
 gem 'newrelic_rpm'
-gem 'rubocop', '~> 0.74.0'
+gem 'rubocop', '~> 0.75.1'
 gem 'rollbar'
